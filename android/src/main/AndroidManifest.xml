@@ -1,0 +1,36 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.pedometer">
+
+    <application>
+        <service
+            android:name="com.example.pedometer.PedometerService"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="com.example.pedometer.stop" />
+                <action android:name="com.example.pedometer.play" />
+                <action android:name="com.example.pedometer.restart" />
+            </intent-filter>
+        </service>
+
+
+
+
+        <receiver
+            android:name=".BootReceiver"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+                <action android:name="android.intent.action.QUICKBOOT_POWERON" />
+                <action android:name="android.intent.action.LOCKED_BOOT_COMPLETED" />
+            </intent-filter>
+        </receiver>
+        <receiver
+            android:name=".AppUpdatedReceiver"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="android.intent.action.MY_PACKAGE_REPLACED" />
+            </intent-filter>
+        </receiver>
+
+    </application>
+</manifest>

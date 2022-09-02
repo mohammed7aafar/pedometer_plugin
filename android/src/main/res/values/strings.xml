@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<resources>
+
+    <string name="main_app_name">1,500</string>
+    <string name="steps">خطوة</string>
+    <string name="dst">12 كم</string>
+    <string name="distance">المسافة</string>
+    <string name="time">الوقت</string>
+    <string name="t">16 دقيقة</string>
+</resources>
+
