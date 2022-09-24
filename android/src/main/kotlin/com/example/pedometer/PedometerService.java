@@ -107,7 +107,7 @@ public class PedometerService extends Service implements SensorEventListener {
     private boolean updateIfNecessary() {
 
         if (steps > lastSaveSteps + SAVE_OFFSET_STEPS ||
-                (steps > 0 && System.currentTimeMillis() > lastSaveTime + SAVE_OFFSET_TIME)) {
+                       (steps > 0 && System.currentTimeMillis() > lastSaveTime + SAVE_OFFSET_TIME)) {
             if (BuildConfig.DEBUG) Log.d(
                     "steps",
                     "saving steps: steps=" + steps + " lastSave=" + lastSaveSteps +
@@ -254,6 +254,8 @@ public class PedometerService extends Service implements SensorEventListener {
     public void onTaskRemoved(final Intent rootIntent) {
         super.onTaskRemoved(rootIntent);
         if (BuildConfig.DEBUG) Log.d("service removed", "sensor service task removed");
+        Intent intent = new Intent("com.example.pedometer.restart");
+        intent.setPackage(getPackageName());
         // Restart service in 500 ms
         ((AlarmManager) getSystemService(Context.ALARM_SERVICE))
                 .set(AlarmManager.RTC, System.currentTimeMillis() + 500, PendingIntent
