@@ -177,7 +177,7 @@ public class PedometerService extends Service implements SensorEventListener {
 
     private void setAddUserWalksAlaram(final Context context) {
 
-        String accessToken = "Bearer eyJhbGciOiJSUzc2OCIsInR5cCI6IkpXVCJ9.XqpOhRd0aocsnX-x_wqA3VywEjPD35j5AG_i--1jQGF2COE3GdkN454pR-UkHWtU477___RAq1JcYho8gAauE_k-JThuyOBMieOP-4sjMOtWQ_1-siI7bQlZUpFPxLejQZijkTc4mZYtDXFKRzs4vY59ddYJO0yrNrwDJg-mZO8Hx91k7TNJAd4b3HlCUXthZzK_U2hV5YKhHOVi_yGM0nbLK1ws.O8uJeqqjSAcaNZQhH5agoffdboFvJFfKLkT6vndV4FQb7f_QVTpiNg3L99C5hI_n_NCnyyxmZbnFQD_NUk3E_GwXjUHUSuGpR6bldKBtcT-NyEwqsZ6yb4J1PB76GcvJ";
+        String accessToken = "Bearer example";
 
         Log.e("retry", "http sent");
         SharedPreferences prefs = context.getSharedPreferences("FlutterSharedPreferences", Context.MODE_PRIVATE);
@@ -194,7 +194,7 @@ public class PedometerService extends Service implements SensorEventListener {
 
         Request request = new Request.Builder()
                 .addHeader("Authorization", accessToken)
-                .url("http://141.94.170.172:8080/api/arbaein/walk/push?api_key=1a502da1-00e4-49bb-987a-ca3ba232a846")
+                .url("url")
                 .post(requestBody)
                 .build();
 

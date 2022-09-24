@@ -20,52 +20,33 @@ class PedometerPlugin : FlutterPlugin{
 
     override fun onAttachedToEngine(@NonNull flutterPluginBinding: FlutterPlugin.FlutterPluginBinding) {
 
-//        /// Create channels
-//        stepDetectionChannel = EventChannel(flutterPluginBinding.binaryMessenger, "step_detection")
-//        stepCountChannel = EventChannel(flutterPluginBinding.binaryMessenger, "step_count")
-//
-//        //start service
-//        Intent(
-//            flutterPluginBinding.applicationContext,
-//            PedometerService::class.java
-//        ).also { intent ->
-//            ContextCompat.startForegroundService(flutterPluginBinding.applicationContext, intent)
-//        }
-//        /// Create handlers
-//        val stepDetectionHandler =
-//            SensorStreamHandler(flutterPluginBinding, Sensor.TYPE_STEP_DETECTOR)
-//        val stepCountHandler =
-//            SensorStreamHandler(flutterPluginBinding, Sensor.TYPE_STEP_COUNTER)
-//
-//        /// Set handlers
-//        stepDetectionChannel.setStreamHandler(stepDetectionHandler)
-//        stepCountChannel.setStreamHandler(stepCountHandler)
+        /// Create channels
+        stepDetectionChannel = EventChannel(flutterPluginBinding.binaryMessenger, "step_detection")
+        stepCountChannel = EventChannel(flutterPluginBinding.binaryMessenger, "step_count")
 
+        //start service
+        Intent(
+            flutterPluginBinding.applicationContext,
+            PedometerService::class.java
+        ).also { intent ->
+            ContextCompat.startForegroundService(flutterPluginBinding.applicationContext, intent)
+        }
+        /// Create handlers
+        val stepDetectionHandler =
+            SensorStreamHandler(flutterPluginBinding, Sensor.TYPE_STEP_DETECTOR)
+        val stepCountHandler =
+            SensorStreamHandler(flutterPluginBinding, Sensor.TYPE_STEP_COUNTER)
 
-//        MethodChannel(flutterPluginBinding.binaryMessenger, "toggle").setMethodCallHandler {
-//            // This method is invoked on the main thread.
-//                call, result ->
-//            if (call.method == "play") {
-//                Log.e("method", "play")
-//
-//
-//            } else if (call.method == "pause") {
-//                Log.e("method", "pause")
-//
-//                stepDetectionChannel.setStreamHandler(null)
-//                stepCountChannel.setStreamHandler(null)
-//                Log.e("method", "deregister")
-//
-//
-//            }
-//        }
+        /// Set handlers
+        stepDetectionChannel.setStreamHandler(stepDetectionHandler)
+        stepCountChannel.setStreamHandler(stepCountHandler)
 
 
     }
 
     override fun onDetachedFromEngine(@NonNull binding: FlutterPlugin.FlutterPluginBinding) {
-//        stepDetectionChannel.setStreamHandler(null)
-//        stepCountChannel.setStreamHandler(null)
+        stepDetectionChannel.setStreamHandler(null)
+        stepCountChannel.setStreamHandler(null)
     }
 
 }
